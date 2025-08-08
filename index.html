@@ -1,10 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi Primera Página Web</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZIORA CMMS – Gestión Inteligente</title>
+  <meta name="description" content="ZIORA CMMS: Optimiza el mantenimiento con inteligencia artificial y diseño profesional." />
+  <style>
+    :root {
+      --accent: #ff7a00;
+      --muted: #6b7280;
+      --bg: #f4f7f9;
+      --card: #ffffff;
+      --radius: 16px;
+      --detail-green: #8be28b;
+      --glass: rgba(255,255,255,0.7);
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg) url('https://www.transparenttextures.com/patterns/cubes.png');
+      color: #071024;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #eaeaea;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo div {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 60px 32px;
+      text-align: center;
+      background: linear-gradient(to right, #fff, #fffaf3);
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 32px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #071024;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .card img.icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 12px;
+    }
+
+    .card img.team {
+      width: 100%;
+      max-width: 100px;
+      height: auto;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .features, .team, .why {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 14px;
+      color: var(--muted);
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+  </style>
 </head>
 <body>
-    <h1>Esta es mi primera página web</h1>
-</body>
-</html>
+  <header>
+    <div class="logo">
+      <div>ZIORA CMMS</div>
+    </div>
+    <nav>
+      <a href="#funciona">¿Cómo funciona?</a>
+      <a href="#ventajas">Ventajas</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Centraliza. Automatiza. Mejora.</h1>
+    <p>Impulsado por Inteligencia Artificial, ZIORA CMMS transforma tu mantenimiento con decisiones inteligentes, eficiencia y control.</p>
+  </section>
+
+  <main class="container">
+
+    <section id="funciona" class="features">
+      <h2 class="section-title"><img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="icon" />¿Cómo funciona?</h2>
+      <div class="grid">
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="ordenes icon" />
+          <strong>Órdenes de trabajo</strong>
+          <p>Flujo de tareas desde la solicitud hasta el cierre con trazabilidad total.</p>
+        </div>
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/9837/9837692.png" alt="activos icon" />
+          <strong>Activos y mantenimientos</strong>
+          <p>Ficha técnica, historial de servicios y programación preventiva.</p>
+        </div>
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="IA icon" />
+          <strong>IA predictiva</strong>
+          <p>Anticipa fallas, prioriza tareas y mejora decisiones con inteligencia artificial.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ventajas" class="why">
+      <h2 class="section-title"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="icon" />¿Por qué usar un CMMS?</h2>
+      <div class="grid">
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="ahorro icon" />
+          <strong>Ahorro de costos</strong>
+          <p>Reduce mantenimientos reactivos y extiende la vida útil de activos.</p>
+        </div>
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="auditoria icon" />
+          <strong>Auditorías sin estrés</strong>
+          <p>Todo documentado, trazable y exportable en un clic.</p>
+        </div>
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3103/3103472.png" alt="movil icon" />
+          <strong>Acceso desde cualquier lugar</strong>
+          <p>App móvil y escritorio sincronizadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipo" class="team">
+      <h2 class="section-title"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="icon" />Nuestro equipo</h2>
+      <div class="grid">
+        <div class="card">
+          <img class="team" src="dd780f6a-fd09-4c67-a79d-f19f63016625.jpg" alt="Dirección General" />
+          <strong>Dirección General</strong>
+          <p>Planeación administrativa y operativa.</p>
+        </div>
+        <div class="card">
+          <img class="team" src="31806ec2-3f15-4ce3-b8aa-3baab18061f6.jpg" alt="Dirección Adjunta" />
+          <strong>Dirección Adjunta</strong>
+      <p>Jorge Aladarte</p>
+          <p>Apoyo estratégico en decisiones clave.</p>
+        </div>
+        <div class="card">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2721/2721291.png" alt="tech icon" />
+          <strong>Dirección de Tecnologías</strong>
+        <p>Joaquin Meza</p>
+          <p>Desarrollo e innovación del CMMS.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contacto" class="features">
+      <h2 class="section-title"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="contacto icon" />Contacto</h2>
+      <p>¿Quieres una demo o más información? Déjanos tus datos.</p>
+      <form onsubmit="event.preventDefault();alert('Gracias por contactarnos')">
+        <input type="text" placeholder="Nombre completo" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc" />
+        <input type="email" placeholder="Correo electrónico" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc" />
+        <textarea rows="4" placeholder="¿En qué podemos ayudarte?" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc"></textarea>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </section>
+
+  </main>
