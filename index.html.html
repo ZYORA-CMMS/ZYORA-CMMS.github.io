@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CMMS - Gestión de Mantenimiento Futurista</title>
+  <meta name="description" content="Sitio demostrativo sobre CMMS (Computerized Maintenance Management System) con un diseño futurista en blanco, naranja y sutiles detalles verdes." />
+  <style>
+    :root{
+      --accent:#ff7a00; /* naranja principal */
+      --muted:#6b7280;
+      --bg:#ffffff; /* fondo blanco */
+      --card:#ffffff;
+      --radius:14px;
+      --detail-green:#8be28b; /* verde sutil */
+      --glass: rgba(255,255,255,0.7);
+      font-family: 'Segoe UI', Roboto, system-ui, Arial, sans-serif;
+    }
+
+    /* Reset y base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:#071024;line-height:1.5;}
+
+    /* Fondo sutil futurista (líneas geométricas muy tenues) */
+    body::before{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.06), transparent),
+        radial-gradient(1.5px 1.5px at 75% 50%, rgba(255,255,255,0.04), transparent),
+        radial-gradient(1.5px 1.5px at 50% 80%, rgba(255,255,255,0.03), transparent),
+        linear-gradient(90deg, rgba(139,226,139,0.02) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,122,0,0.02) 1px, transparent 1px);
+      background-size: auto, auto, auto, 120px 120px, 120px 120px;
+    }
+
+    header{position:sticky;top:0;z-index:50;padding:18px 24px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.4));backdrop-filter:blur(6px);border-bottom:1px solid rgba(7,16,36,0.04)}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;z-index:5}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--detail-green));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;box-shadow:0 8px 24px rgba(255,122,0,0.12)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:700;font-size:14px}
+    nav a:hover{color:var(--accent)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:48px 0 28px;align-items:center}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:0.06em}
+    h1{margin:6px 0 0;font-size:36px;line-height:1.05;background:linear-gradient(90deg,var(--accent),var(--detail-green));-webkit-background-clip:text;color:transparent}
+    p.lead{color:var(--muted);margin:12px 0 0;max-width:70%}
+    .cta-row{display:flex;gap:12px;margin-top:18px}
+    .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:800;box-shadow:0 10px 30px rgba(255,122,0,0.14);letter-spacing:0.02em}
+    .btn.ghost{background:transparent;border:2px solid rgba(11,110,253,0.06);color:var(--accent)}
+
+    /* Right panel cards */
+    .side-cards{display:flex;flex-direction:column;gap:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.85),var(--glass));padding:16px;border-radius:12px;border:1px solid rgba(7,16,36,0.04);box-shadow:0 6px 18px rgba(7,16,36,0.04);}
+    .card strong{display:block;margin-bottom:6px}
+    .card .muted{color:var(--muted);font-size:13px}
+
+    /* Secciones */
+    section{position:relative;z-index:2;padding:18px 0}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .feature-list{display:grid;gap:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,rgba(255,122,0,0.06),rgba(139,226,139,0.02));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);font-size:14px}
+
+    /* Cards grid */
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .small{font-size:14px;color:var(--muted)}
+
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:10px;border-bottom:1px solid #eef2f7;text-align:left;font-size:14px}
+    th{color:var(--muted);font-weight:700}
+
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .price{padding:16px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff9f4);border:1px solid rgba(7,16,36,0.04);}
+    .price h3{margin:0}
+    .price .amount{font-size:22px;font-weight:900;margin-top:8px;color:var(--accent)}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{padding:12px;border-radius:10px;border:1px solid #eef2f7;font-size:14px}
+
+    footer{padding:28px 0;margin-top:36px;border-top:1px solid rgba(7,16,36,0.04)}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    /* Reveal animations (suaves) */
+    .reveal{opacity:0;transform:translateY(12px);transition:all 550ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      p.lead{max-width:100%}
+      nav a{display:none}
+    }
+
+    @media (max-width:560px){
+      h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">CM</div>
+        <div>
+          <div style="font-weight:900">ZIORA CMMS</div>
+          <div class="small">Gestión de mantenimiento moderna</div>
+        </div>
+      </div>
+      <nav aria-label="Navegación principal">
+        <a href="#que-es">Qué es</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#equipo">Equipo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow reveal">Software • Procesos • Datos</div>
+        <h1 class="reveal">CMMS — mantén todo en marcha con inteligencia</h1>
+        <p class="lead reveal">Centraliza activos, órdenes de trabajo, inventario y planificación preventiva en una sola plataforma. Diseño limpio, controles claros y datos accionables.</p>
+        <div class="cta-row reveal">
+          <button class="btn" onclick="alert('Demo solicitada — placeholder')">Solicitar demo</button>
+          <button class="btn ghost" onclick="document.getElementById('precios').scrollIntoView({behavior:'smooth'})">Ver planes</button>
+        </div>
+
+        <div style="margin-top:22px" class="reveal">
+          <div class="grid-3" style="gap:10px">
+            <div class="card"><strong>Disponibilidad</strong><div class="small">Historial y métricas para maximizar tiempo operativo.</div></div>
+            <div class="card"><strong>Planificación</strong><div class="small">Tareas preventivas y alertas automáticas.</div></div>
+            <div class="card"><strong>Inventario</strong><div class="small">Control de repuestos y niveles mínimos inteligentes.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-cards reveal" aria-hidden="false">
+        <div class="card">
+          <strong>Panel de control en tiempo real</strong>
+          <div class="muted">Indicadores clave, alertas y accesos rápidos.</div>
+        </div>
+        <div class="card">
+          <strong>Acceso móvil</strong>
+          <div class="muted">Toma y cierra órdenes desde el celular con fotos y firmas.</div>
+        </div>
+        <div class="card">
+          <strong>Integraciones</strong>
+          <div class="muted">ERP, IoT y herramientas de gestión ya conectadas.</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="que-es" class="card reveal">
+      <h2>¿Qué es un CMMS?</h2>
+      <p class="small">Un CMMS (Computerized Maintenance Management System) es la columna vertebral del mantenimiento moderno: organiza activos, gestiona órdenes de trabajo, optimiza inventarios y entrega reportes que ayudan a reducir costos y tiempo de inactividad.</p>
+
+      <div style="margin-top:12px">
+        <h3>Casos de uso</h3>
+        <ul class="small">
+          <li>Hospitales: historial de equipos médicos y cumplimiento normativo.</li>
+          <li>Plantas industriales: reducción de paradas no planificadas.</li>
+          <li>Facility management: programación de servicios y mantenimientos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="modulos" class="two-col">
+      <div>
+        <h2>Módulos principales</h2>
+        <div class="feature-list">
+          <div class="feature reveal"><div class="icon">OT</div><div><strong>Órdenes de trabajo</strong><div class="small">Creación, asignación, seguimiento y cierre con historial completo.</div></div></div>
+          <div class="feature reveal"><div class="icon">AM</div><div><strong>Gestión de activos</strong><div class="small">Ficha técnica, ubicaciones y ciclos de mantenimiento.</div></div></div>
+          <div class="feature reveal"><div class="icon">PM</div><div><strong>Mantenimiento preventivo</strong><div class="small">Calendarios y checklists programables.</div></div></div>
+          <div class="feature reveal"><div class="icon">INV</div><div><strong>Inventario</strong><div class="small">Stock, mínimos y alertas inteligentes.</div></div></div>
+          <div class="feature reveal"><div class="icon">REP</div><div><strong>Reportes</strong><div class="small">MTTR, MTBF, tiempo de inactividad y costo por activo.</div></div></div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Ejemplo: ficha de activo</h3>
+        <table>
+          <thead><tr><th>Campo</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>ID</td><td>EQ-000123</td></tr>
+            <tr><td>Nombre</td><td>Monitor de signos vitales</td></tr>
+            <tr><td>Ubicación</td><td>UCI - Piso 2</td></tr>
+            <tr><td>Proveedor</td><td>MedEquip S.A.</td></tr>
+            <tr><td>Fecha de adquisición</td><td>2022-06-17</td></tr>
+            <tr><td>Estado</td><td>Operativo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="beneficios" class="reveal">
+      <div class="card" style="background:linear-gradient(180deg,#fff6ee,#fff);border:2px solid var(--accent);text-align:center">
+        <h3 style="margin:0;color:var(--accent)">¿Por qué usar un CMMS?</h3>
+        <p class="small" style="margin-top:8px">Digitaliza tu mantenimiento, toma decisiones con datos y mantén tus activos funcionando al máximo rendimiento. El CMMS es la base de una operación eficiente, auditable y sostenible.</p>
+      </div>
+
+      <h2>Beneficios</h2>
+      <div class="grid-3">
+        <div class="card"><strong>Reducción de costos</strong><div class="small">Menos reparaciones de emergencia y mejor uso de repuestos.</div></div>
+        <div class="card"><strong>Mayor vida útil</strong><div class="small">Mantenimiento preventivo oportuno y registros técnicos.</div></div>
+        <div class="card"><strong>Cumplimiento</strong><div class="small">Historial documentado para auditorías.</div></div>
+      </div>
+    </section>
+
+    <section id="como-implementar" class="card reveal">
+      <h2>Guía rápida</h2>
+      <ol class="small">
+        <li>Mapear activos y responsables.</li>
+        <li>Definir políticas preventivas y correctivas.</li>
+        <li>Configurar inventarios y niveles mínimos.</li>
+        <li>Capacitar al personal y comenzar con un piloto.</li>
+      </ol>
+    </section>
+
+    <section id="precios" class="reveal">
+      <h2>Planes</h2>
+      <div class="pricing">
+        <div class="price">
+          <h3>Essentials</h3>
+          <div class="amount">$49 / mes</div>
+          <div class="small">Órdenes de trabajo, gestión básica de activos e inventario limitado.</div>
+        </div>
+        <div class="price">
+          <h3>Profesional</h3>
+          <div class="amount">$149 / mes</div>
+          <div class="small">Todo Essentials + mantenimiento preventivo y reportes avanzados.</div>
+        </div>
+        <div class="price">
+          <h3>Enterprise</h3>
+          <div class="amount">Cotización</div>
+          <div class="small">Integraciones ERP, IoT y soporte prioritario.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="card reveal">
+      <h2>Contacto</h2>
+      <p class="small">¿Quieres una demo o asesoría para implementar un CMMS en tu organización? Déjanos tus datos.</p>
+      <form onsubmit="event.preventDefault();alert('Gracias — formulario de ejemplo')">
+        <input type="text" placeholder="Nombre completo" required />
+        <input type="email" placeholder="Correo electrónico" required />
+        <textarea placeholder="Descripción del proyecto" rows="4"></textarea>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button class="btn" type="submit">Enviar</button>
+          <button class="btn ghost" type="button" onclick="window.print()">Imprimir</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+
+    <section id="equipo" class="reveal">
+      <h2>Equipo ZIORA</h2>
+      <div class="grid-3">
+        <div class="card" style="text-align:center">
+          <img src="dd780f6a-fd09-4c67-a79d-f19f63016625.jpg" alt="Dirección General" style="width:100%;border-radius:12px;margin-bottom:12px" />
+          <strong>Dirección General y Administración</strong>
+          <div class="small">Encargada de liderar la estrategia operativa y organizacional.</div>
+        </div>
+        <div class="card" style="text-align:center">
+          <img src="31806ec2-3f15-4ce3-b8aa-3baab18061f6.jpg" alt="Dirección Adjunta" style="width:100%;border-radius:12px;margin-bottom:12px" />
+          <strong>Dirección General Adjunta</strong>
+          <div class="small">Apoyo estratégico en gestión empresarial y coordinación general.</div>
+        </div>
+        <div class="card" style="text-align:center">
+          <div style="width:100%;height:200px;background:#f6f6f6;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:14px">Sin imagen</div>
+          <strong>Dirección de Tecnologías</strong>
+          <div class="small">Joaquín Meza — Responsable del desarrollo, innovación y soporte técnico de ZIORA CMMS.</div>
+        </div>
+      </div>
+    </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>ZIORA CMMS</strong>
+        <div class="small">Demostración — Diseño futurista en blanco y naranja.</div>
+        <div class="small">© 2025</div>
+      </div>
+      <div style="text-align:right">
+        <div class="small">Política de privacidad · Términos</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // IntersectionObserver para revelar elementos suavemente
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+      // Fallback: marca visibles si JS ya no funciona
+      window.addEventListener('load', ()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')));
+    })();
+  </script>
+</body>
+</html>
